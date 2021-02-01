@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head.ejs')%>
+<body><center>
+    <p class="ques">
+        Steganography
+    </p>
+    <form action="/index" method="POST">
+    <p class="ques">
+        User name:
+    </p>
+    <input type="text" name="username"><br>
+    <p class="ques">
+        Password :
+    </p>
+    <input type="password" name="password"><br>
+    <br>
+    <button>Login</button>
+    </form>
+    <br>
+    <a href="/decode"><button class="button">decode</button></a>
+</center>
+</body>
+<%- include('footoer.ejs')%>
+</html>

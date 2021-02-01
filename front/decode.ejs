@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('head.ejs')%>
+<body>
+<style>
+  body{
+    color: white;
+    
+  }
+  .btns {
+    margin-top:15px;
+    margin-bottom:10px;
+    padding: 0 40px;
+  }
+  .btn {
+    padding:10px 20px 10px 20px;
+    -moz-border-radius:15px;
+    -o-border-radius:15px;
+    -webkit-border-radius:15px;
+    border-radius:15px;
+    border:2px solid #ffffff;
+    cursor:pointer;
+    color:#000000;
+    background-color:white;
+    width:50px;
+    text-align:center;
+  }
+  .btn:hover {
+    color:white;
+    background-color:#45d4ff;
+  }
+  
+  
+</style>
+<center>
+<div id="main">
+  <div id="left">
+    <h2>Image:</h2>
+    <input id="file" type="file"/><br/>
+    
+    <div class="btns">
+      <span id="hide" class="">Click here for message-></span>
+      <span id="read" class="btn">Read</span>
+    </div>
+    <h2>Key:<span id="key"></span></h2>
+    <textarea id="text" placeholder="Image Key auto generate"></textarea>
+    <textarea id="Mykey" placeholder="Email Key here"></textarea>
+    <button onclick="decode()">Message</button>>
+  </div>
+  <div id="right">
+    <div id="original" class="half">
+      <p id="finall">
+        Final Message Here
+      </p>
+      <h2>Plain Image:</h2>
+      <img id="img" src="" height="200px"/>
+    </div>
+
+    <div id="stego" class="half">
+    <div id="messageArea" class="invisible">
+      <h2>Image Key:</h2>
+      <div id="message"></div>
+      <h2>Email Key:</h2>
+      <p id="email"></p>
+    </div>
+   
+  </div>
+  <div class="clear"></div>
+  </div>
+</center>
+<script type="text/javascript">
+
+function handleFileSelect(evt) {
+  var original = document.getElementById("original"),
+    stego = document.getElementById("stego"),
+    img = document.getElementById("img"),
+    cover = document.getElementById("cover"),
+    message = document.getElementById("message");
+  if(!original || !stego) return;
+
+  var files = evt.target.files; // FileList object
+
+
+  for (var i = 0, f; f = files[i]; i++) {
+    if (!f.type.match('image.*')) {
+      continue;
+    }
+
+    var reader = new FileReader();
+
+    reader.onload = (function(theFile) {
+      return function(e) {
+        img.src = e.target.result;
+        img.title = escape(theFile.name);
+        stego.className = "half invisible";
+        cover.src = "";
+        message.innerHTML="";
+        message.parentNode.className="invisible";
+        updateCapacity();
+      };
+    })(f);
+    reader.readAsDataURL(f);
+  }
+}
+
+var value;
+function read() {
+  var img = document.getElementById("img"),
+    cover = document.getElementById("cover"),
+    message = document.getElementById("message"),
+    textarea = document.getElementById("text");
+  if(img && textarea) {
+    value = steg.decode(img);
+    message.innerHTML = steg.decode(img);
+    console.log(steg.decode(img));
+    if(message.innerHTML !== "") {
+      message.parentNode.className="";
+      textarea.value = message.innerHTML;
+      updateCapacity();
+    }
+  }
+}
+function decode(){
+  console.log(value);
+  console.log(document.getElementById('Mykey').value)
+  var finalmesssage =  decript(value,(document.getElementById('Mykey').value));
+  console.log(finalmesssage);
+  var show = "<h2> Message : "+finalmesssage+"</h2>";
+  document.getElementById("email").innerHTML = document.getElementById('Mykey').value;
+  document.getElementById("finall").innerHTML = show;
+}
+
+function updateCapacity() {
+  var img = document.getElementById('img'),
+    textarea = document.getElementById('text');
+  if(img && text)
+    document.getElementById('capacity').innerHTML='('+textarea.value.length + '/' + steg.getHidingCapacity(img) +' chars)';
+}
+
+window.onload = function(){
+  document.getElementById('file').addEventListener('change', handleFileSelect, false);
+  document.getElementById('hide').addEventListener('click', hide, false);
+  document.getElementById('read').addEventListener('click', read, false);
+  document.getElementById('text').addEventListener('keyup', updateCapacity, false);
+  hide();
+  updateCapacity();
+};
+</script>
+</body>
+<%- include('optin.ejs')%>
+<%- include('steg.ejs')%>
+<%- include('footoer.ejs')%>
+</html>
