@@ -1,6 +1,6 @@
 # steganography-Node-JS-
-##Data Security (Project)
-##Introduction:
+## Data Security (Project)<br>
+## Introduction:<br>
 Steganography is the practice of concealing a message within another message or a physical object. In computing/electronic contexts, a computer file, message, image, or video is concealed within another file, message, image, or video.
 Here, after getting message webapp will encoding text by one time pad cypher, after that webapp encode cypher text in image and send key and encoded image to a mail of person to whom where user want. 
 <br>
@@ -10,7 +10,7 @@ Installation:
 	Npm install
 	Node app
 	Visit localhost:4000 
-  touch .env 
+  	touch .env 
 ```
 ##Inside .env create two variable <br>
 ```
