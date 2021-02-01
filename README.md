@@ -6,10 +6,10 @@ Here, after getting message webapp will encoding text by one time pad cypher, af
 <br>
 Installation:
 ```
-	Git clone github.com/pinological/steganography-Node-JS-
-	Npm install
-	Node app
-	Visit localhost:4000 
+	git clone github.com/pinological/steganography-Node-JS-
+	npm install
+	node app
+	visit localhost:4000 
   	touch .env 
 ```
 ##Inside .env create two variable <br>
