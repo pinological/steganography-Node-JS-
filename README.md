@@ -12,7 +12,7 @@ Installation:
 	visit localhost:4000 
   	touch .env 
 ```
-##Inside .env create two variable <br>
+## Inside .env create two variable <br>
 ```
 PASSWORD = <your gmail password>
 EMAIL = <your email>
